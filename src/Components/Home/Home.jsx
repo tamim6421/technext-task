@@ -4,6 +4,7 @@ import { MdLogout } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { FaPhone } from "react-icons/fa";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 const Home = () => {
   const { data: allUser = [] } = useQuery({
@@ -47,17 +48,21 @@ const Home = () => {
                   />
                 </a>
 
-                <p className="p-1 px-4 text-xs text-white bg-green-600 rounded-full">{user?.firstName}</p>
+                <p className="p-1 px-4 text-xs text-white bg-green-600 rounded-full">
+                  {user?.firstName}
+                </p>
 
                 <div className="w-full p-2 mt-4 rounded-lg">
                   <div className=" text-sm space-y-4 text-gray-600 ">
                     <div>
-                      <div className="flex gap-1 items-center ">
-                        <p className="text-lg font-semibold">Name :</p>
-                        <button className=" btn btn-sm bg-gray-400 hover:text-black drop-shadow-xl text-white font-bold">
-                          {user.firstName} {user.lastName}
-                        </button>
-                      </div>
+                      <Link to={`/userDetails/${user?.id}`}>
+                        <div className="flex gap-1 items-center ">
+                          <p className="text-lg font-semibold">Name :</p>
+                          <button className=" btn btn-sm bg-gray-400 hover:text-black drop-shadow-xl text-white font-bold">
+                            {user.firstName} {user.lastName}
+                          </button>
+                        </div>
+                      </Link>
                     </div>
                     <div className="flex gap-1 items-center ">
                       <p className="text-lg font-semibold">
@@ -75,30 +80,24 @@ const Home = () => {
                       <p className="font-bold ">{user.phone}</p>
                     </div>
                     <div className="">
-                     
                       <p className="font-bold text-lg  "> Address : </p>
                       <div>
-                        {user?.address?.address} / {user?.address?.city} / {user?.address?.state}
+                        {user?.address?.address} / {user?.address?.city} /{" "}
+                        {user?.address?.state}
                       </div>
                     </div>
+                    <div className="">
+                      <p className="font-bold text-lg  "> Company : </p>
+                      <div>{user?.company?.name}</div>
+                    </div>
 
-                    {/* <div className="mt-5">
-                  <Link >
-                  <button className='bg-gray-500 px-4 text-lg py-1 flex items-center rounded-lg text-white cursor-pointer hover:bg-gray-700  mb-1'>
-                  <FaEdit></FaEdit>  Update Profile
-                  </button></Link>
-                 <div className="flex">
-                  <p>
-                  
-                  </p>
-                 <button
-                 
-                  className='bg-gray-500 flex items-center gap-2 text-lg px-10 py-1 rounded-lg text-white cursor-pointer hover:bg-gray-700'>
-                 <MdLogout></MdLogout> Logout
-                  </button>
-
-                 </div>
-                </div> */}
+                    <div className="mt-5">
+                      <Link to={`/userDetails/${user?.id}`}>
+                        <button className="bg-gray-500  px-6 text-lg  flex items-center rounded-lg text-white cursor-pointer hover:bg-gray-700  mb-1">
+                          <FaArrowRightLong className="text-xl" />
+                        </button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
