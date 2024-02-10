@@ -1,14 +1,15 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useLoaderData } from "react-router-dom";
 import { MdEmail } from "react-icons/md";
 import { FaPhone } from "react-icons/fa";
 
 const dataDetails = () => {
   const data = useLoaderData();
-  console.log(data);
+//   console.log(data);
 
   return (
     <div className="my-20 p-3">
-      <div className="card w-3/4 mx-auto p-3 bg-gray-100 shadow-xl">
+      <div className="card w-3/4 mx-auto p-3 bg-green-50 shadow-xl">
         <div className="avatar flex justify-center items-center">
           <div className="w-36  rounded">
             <img src={data.image} alt="data" />
