@@ -53,9 +53,9 @@ const Home = () => {
   }
 
   return (
-    <div className="my-20">
-      <div className="w-3/4 mt-20 mx-auto">
-        <h1 className=" text-3xl md:text-5xl font-semibold text-green-500 text-center mt-36 mb-3">
+    <div className="my-10">
+      <div className="w-3/4  mx-auto">
+        <h1 className=" text-3xl md:text-5xl font-semibold text-green-500 text-center  mb-3">
           Search User By <span className="text-orange-500">Name</span> <br />&
           sort by
           <span className="text-orange-500"> Name/ Email/ Company Name</span>
