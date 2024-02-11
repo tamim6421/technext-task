@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { IoHome } from "react-icons/io5";
 
 const Navbar = () => {
   const [theme, setTheme] = useState(
@@ -34,7 +35,7 @@ const Navbar = () => {
               : "hover:bg-green-200 hover:text-black"
           }
         >
-          Home
+          <IoHome /> Home
         </NavLink>
       </li>
     </>

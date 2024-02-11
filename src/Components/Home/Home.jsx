@@ -4,6 +4,7 @@ import { MdEmail } from "react-icons/md";
 import { FaPhone } from "react-icons/fa";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { useEffect, useState } from "react";
+import { IoMdAdd } from "react-icons/io";
 
 const Home = () => {
   const [allUsers, setAllUser] = useState([]);
@@ -18,7 +19,6 @@ const Home = () => {
 
         //  console.log(sortBy)
         if (sortBy === "name") {
-          console.log("bal");
           sortedUsers.sort((a, b) => a.firstName.localeCompare(b.firstName));
         } else if (sortBy === "email") {
           sortedUsers.sort((a, b) => a.email.localeCompare(b.email));
@@ -96,7 +96,16 @@ const Home = () => {
         </form>
       </div>
 
-      <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-20 p-3">
+      <div className="mt-20 ">
+        <Link to="/addUser">
+          <button className="btn ml-4 px-10 bg-green-500 text-white">
+            <IoMdAdd className="text-2xl" />
+            Add user
+          </button>
+        </Link>
+      </div>
+
+      <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-3">
         {allUsers?.map((user, idx) => (
           <div key={idx}>
             <div className="bg-white shadow-lg rounded-2xl  ">
@@ -124,7 +133,7 @@ const Home = () => {
                       <Link to={`/userDetails/${user?.id}`}>
                         <div className="flex gap-1 items-center ">
                           <p className="text-lg font-semibold">Name :</p>
-                          <button className=" btn btn-sm bg-gray-400 hover:text-black drop-shadow-xl text-white font-bold">
+                          <button className=" btn btn-sm bg-green-500 hover:text-black drop-shadow-xl text-white font-bold">
                             {user.firstName} {user.lastName}
                           </button>
                         </div>
@@ -161,12 +170,6 @@ const Home = () => {
                       <Link to={`/userDetails/${user?.id}`}>
                         <button className="bg-gray-500  px-6 text-lg  flex items-center rounded-lg text-white cursor-pointer hover:bg-gray-700  mb-1">
                           <FaArrowRightLong className="text-xl" />
-                        </button>
-                      </Link>
-                      <Link to="/addUser">
-                        <button className="btn btn-sm bg-gray-500 text-white">
-                          {" "}
-                          Add user
                         </button>
                       </Link>
                     </div>

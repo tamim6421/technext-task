@@ -1,22 +1,26 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { MdEmail } from "react-icons/md";
 import { FaPhone } from "react-icons/fa";
+import { FaArrowLeft } from "react-icons/fa6";
 
 const dataDetails = () => {
   const data = useLoaderData();
-//   console.log(data);
+  const navigate = useNavigate();
+  //   console.log(data);
+
+  const handelBack = () => {
+    navigate(-1);
+  };
 
   return (
-    <div className="my-20 p-3">
-      <div className="card w-3/4 mx-auto p-3 bg-green-50 shadow-xl">
-        <div className="avatar flex justify-center items-center">
-          <div className="w-36  rounded">
-            <img src={data.image} alt="data" />
-          </div>
-        </div>
-        <div className="card-body">
-          <div className=" text-sm space-y-4 text-gray-600 ">
+    <div className="my-20 p-3 min-h-screen">
+      <div className="card w-3/4 mx-auto p-3">
+        <div className="card flex-col md:flex-row card-side bg-gray-100 shadow-xl">
+          <figure>
+            <img src={data.image} alt="image" />
+          </figure>
+          <div className="card-body">
             <div>
               <div className="">
                 <p className="text-lg font-semibold">
@@ -61,14 +65,12 @@ const dataDetails = () => {
                 <div>{data?.company?.name}</div>
               </div>
             </div>
-
-            {/* <div className="mt-5">
-                  <Link to={`/dataDetails/${data?.id}`}>
-                  <button className='bg-gray-500  px-6 text-lg  flex items-center rounded-lg text-white cursor-pointer hover:bg-gray-700  mb-1'>
-                  <FaArrowRightLong className="text-xl" />
-                  </button></Link>
-               
-                </div> */}
+            <button
+              onClick={handelBack}
+              className="btn bg-red-400 max-w-max px-5 text-white"
+            >
+              <FaArrowLeft /> back
+            </button>
           </div>
         </div>
       </div>
