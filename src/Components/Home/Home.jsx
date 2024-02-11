@@ -10,8 +10,10 @@ const Home = () => {
   const [allUsers, setAllUser] = useState([]);
   const [search, setSearch] = useState("");
   const [sortBy, setSortBy] = useState("");
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    setLoading(true)
     fetch(`https://dummyjson.com/users/search?q=${search}`)
       .then((res) => res.json())
       .then((data) => {
@@ -29,6 +31,7 @@ const Home = () => {
         }
 
         setAllUser(sortedUsers);
+        setLoading(false)
       });
   }, [search, sortBy]);
 
@@ -45,10 +48,14 @@ const Home = () => {
     setSortBy(selectedValue);
   };
 
+  if(loading){
+    return <p className="text-center my-36 text-4xl font-bold">Loading ......</p>
+  }
+
   return (
     <div className="my-20">
       <div className="w-3/4 mt-20 mx-auto">
-        <h1 className="text-5xl font-semibold text-green-500 text-center mt-36 mb-3">
+        <h1 className=" text-3xl md:text-5xl font-semibold text-green-500 text-center mt-36 mb-3">
           Search User By <span className="text-orange-500">Name</span> <br />&
           sort by
           <span className="text-orange-500"> Name/ Email/ Company Name</span>
